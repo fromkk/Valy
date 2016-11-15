@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
   - iOS 8~ / watchOS 2~ / tvOS 8~ / macOS 10.16~
 DESC
 
-  s.homepage     = "http://github.com/fromkk/Valy"
+  s.homepage     = "https://github.com/fromkk/Valy"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
