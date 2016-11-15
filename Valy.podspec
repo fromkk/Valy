@@ -88,7 +88,7 @@ DESC
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://github.com/fromkk/Valy.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/fromkk/Valy.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
