@@ -5,6 +5,6 @@
       location = "group:/Users/k-ueoka/Development/iOS/ValidatorSample/Valy-Sample-iOS.playground">
    </FileRef>
    <FileRef
-      location = "container:Validator/Validator.xcodeproj">
+      location = "container:Validator.xcodeproj">
    </FileRef>
 </Workspace>
