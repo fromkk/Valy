@@ -103,4 +103,17 @@ textView.ovserveValidation { (status, result) in
     }
 }
 
+let validator = Valy.factory(rules: [ValyRule.minLength(5)])
+validator.failed = { (_ rule: AnyValidatorRule) -> String? in
+    switch rule {
+    case ValyRule.minLength(let length):
+        return "need \(length) length"
+    default:
+        return nil
+    }
+}
+let result: ValidatorResult = validator.run(with: "test!")
+let errorMessage: String? = validator.errorMessage(result)
+print(errorMessage ?? "")
+
 PlaygroundPage.current.liveView = textView

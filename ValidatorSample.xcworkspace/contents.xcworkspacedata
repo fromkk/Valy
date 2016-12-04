@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/k-ueoka/Development/iOS/ValidatorSample/Valy-Sample-iOS.playground">
+      location = "group:Valy-Sample-iOS.playground">
    </FileRef>
    <FileRef
       location = "container:Validator.xcodeproj">

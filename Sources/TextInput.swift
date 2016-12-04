@@ -74,10 +74,12 @@ open class VLTextField: UITextField, ValidatableInputText {
         return Valy.factory(rules: [])
     }()
 
+    @discardableResult
     public func add(rule: AnyValidatorRule) -> Self {
         self.validator.add(rule: rule)
         return self
     }
+    @discardableResult
     public func add(rules: [AnyValidatorRule]) -> Self {
         self.validator.add(rules: rules)
         return self
@@ -148,10 +150,12 @@ open class VLTextView: UITextView, ValidatableInputText {
         return Valy.factory(rules: [])
     }()
 
+    @discardableResult
     public func add(rule: AnyValidatorRule) -> Self {
         self.validator.add(rule: rule)
         return self
     }
+    @discardableResult
     public func add(rules: [AnyValidatorRule]) -> Self {
         self.validator.add(rules: rules)
         return self

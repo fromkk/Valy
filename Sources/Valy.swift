@@ -107,7 +107,18 @@ public enum ValyRule: AnyValidatorRule {
 }
 
 public class Valy: AnyValidatable {
+    public typealias ErrorGenerator = (_ rule: AnyValidatorRule) -> String?
+    
     private (set) public var rules: [AnyValidatorRule] = []
+    public var failed: ErrorGenerator?
+    public func errorMessage(_ result: ValidatorResult) -> String? {
+        switch result {
+        case .success:
+            return nil
+        case .failure(let rule):
+            return self.failed?(rule)
+        }
+    }
 
     private init() {}
     private init(rules: [AnyValidatorRule]) {

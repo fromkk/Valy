@@ -18,7 +18,10 @@ public enum ValidatorResult {
 }
 
 public protocol AnyValidator: class {
+    typealias ErrorGenerator = (_ rule: AnyValidatorRule) -> String?
     var rules: [AnyValidatorRule] { get }
+    var failed: ErrorGenerator? { get set }
+    func errorMessage(_ result: ValidatorResult) -> String?
 
     static func factory() -> AnyValidator
     static func factory(rules: [AnyValidatorRule]) -> AnyValidatable
