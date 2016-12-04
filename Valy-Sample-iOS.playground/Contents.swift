@@ -74,16 +74,19 @@ case .failure(let rule):
 let textField: VLTextField = VLTextField(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 320.0, height: 20.0)))
 textField.add(rule: ValyRule.required).add(rule: ValyRule.maxLength(30))
 textField.ovserveValidation { (status, result) in
-    print(status)
-    switch result {
-    case .success:
-        print("success")
-    case .failure(let rule):
-        print("failed \(rule)")
-    }
+    let errorMessage: String? = textField.errorMessage(result)
+    print("observe", errorMessage)
 }
 textField.backgroundColor = UIColor.white
 textField.textColor = UIColor.gray
+textField.failed = { (_ rule: AnyValidatorRule) -> String? in
+    switch rule {
+    case ValyRule.maxLength(let length):
+        return "textField can input max \(length) length"
+    default:
+        return nil
+    }
+}
 
 // textView ----------------------------------
 let textView: VLTextView = VLTextView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 320.0, height: 40.0)), textContainer: nil)
@@ -112,7 +115,7 @@ validator.failed = { (_ rule: AnyValidatorRule) -> String? in
         return nil
     }
 }
-let result: ValidatorResult = validator.run(with: "test!")
+let result: ValidatorResult = validator.run(with: "test")
 let errorMessage: String? = validator.errorMessage(result)
 print(errorMessage ?? "")
 

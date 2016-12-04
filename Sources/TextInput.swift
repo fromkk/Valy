@@ -16,11 +16,26 @@ import UIKit
 
 public protocol ValidatableInputText {
     associatedtype ValidatorObserver
+    typealias ErrorGenerator = (_ rule: AnyValidatorRule) -> String?
     var validator: AnyValidatable { get }
+    var failed: ErrorGenerator? { get set }
     func add(rule: AnyValidatorRule) -> Self
     func add(rules: [AnyValidatorRule]) -> Self
+    func run() -> ValidatorResult
     func valid() -> ValidatorResult
     func ovserveValidation(observer: ValidatorObserver)
+    func errorMessage(_ result: ValidatorResult) -> String?
+}
+
+extension ValidatableInputText {
+    public func errorMessage(_ result: ValidatorResult) -> String? {
+        switch result {
+        case .success:
+            return nil
+        case .failure(let rule):
+            return self.failed?(rule)
+        }
+    }
 }
 
 open class VLTextField: UITextField, ValidatableInputText {
@@ -73,6 +88,8 @@ open class VLTextField: UITextField, ValidatableInputText {
     public lazy var validator: AnyValidatable = {
         return Valy.factory(rules: [])
     }()
+    
+    public var failed: ValidatableInputText.ErrorGenerator?
 
     @discardableResult
     public func add(rule: AnyValidatorRule) -> Self {
@@ -94,8 +111,8 @@ open class VLTextField: UITextField, ValidatableInputText {
         self.observer = observer
     }
 
-    public func textDidChaned() {
-        print(#function)
+    public func run() -> ValidatorResult {
+        return self.validator.run(with: self.text)
     }
 }
 
@@ -149,6 +166,7 @@ open class VLTextView: UITextView, ValidatableInputText {
     public lazy var validator: AnyValidatable = {
         return Valy.factory(rules: [])
     }()
+    public var failed: ValidatableInputText.ErrorGenerator?
 
     @discardableResult
     public func add(rule: AnyValidatorRule) -> Self {
@@ -168,5 +186,9 @@ open class VLTextView: UITextView, ValidatableInputText {
     private var observer: ValidatorObserver?
     public func ovserveValidation(observer: @escaping ValidatorObserver) {
         self.observer = observer
+    }
+    
+    public func run() -> ValidatorResult {
+        return self.validator.run(with: self.text)
     }
 }
