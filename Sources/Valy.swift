@@ -28,7 +28,7 @@ public enum ValyRule: AnyValidatorRule {
             return nil
         }
 
-        if 0 < value.characters.count {
+        if 0 < value.count {
             return value
         } else {
             return nil
@@ -43,17 +43,17 @@ public enum ValyRule: AnyValidatorRule {
             guard let value: String = self.hasValue(with: value) else {
                 return true
             }
-            return length <= value.characters.count
+            return length <= value.count
         case .maxLength(let length):
             guard let value: String = self.hasValue(with: value) else {
                 return true
             }
-            return length >= value.characters.count
+            return length >= value.count
         case .exactLength(let length):
             guard let value: String = self.hasValue(with: value) else {
                 return true
             }
-            return length == value.characters.count
+            return length == value.count
         case .numericMin(let min):
             guard let value: String = self.hasValue(with: value) else {
                 return true
@@ -89,7 +89,7 @@ public enum ValyRule: AnyValidatorRule {
             }
             do {
                 let regexp: NSRegularExpression = try NSRegularExpression(pattern: pattern, options: [])
-                let range: NSRange = NSRange(location: 0, length: value.characters.count )
+                let range: NSRange = (value as NSString).range(of: value)
                 return 0 < regexp.numberOfMatches(in: value, options: [], range: range)
             } catch {
                 return true
