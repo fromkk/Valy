@@ -6,7 +6,7 @@
 
 # Valy
 
-Valy is string validation library with Swift 3.
+Valy is string validation library with Swift 4.
 
 # Required
 
