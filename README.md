@@ -10,7 +10,7 @@ Valy is string validation library with Swift 3.
 
 # Required
 
-- Swift 3
+- Swift 4.1
 - Xcode 8
 - iOS 8~ / watchOS 2~ / tvOS 8~ / macOS 10.16~
 - Carthage or Cocoapods
