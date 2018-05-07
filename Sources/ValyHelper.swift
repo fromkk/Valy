@@ -24,7 +24,6 @@ import Foundation
     case numericBetween
 }
 
-@available (*, unavailable)
 @objc public class Validator: NSObject {
     private let shared: AnyValidator = Valy.factory()
 
