@@ -62,9 +62,9 @@ open class VLTextField: UITextField, ValidatableInputText {
             return
         }
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)), name: Notification.Name.UITextFieldTextDidBeginEditing, object: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)), name: Notification.Name.UITextFieldTextDidChange, object: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)), name: Notification.Name.UITextFieldTextDidEndEditing, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)), name: UITextField.textDidBeginEditingNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)), name: UITextField.textDidChangeNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)), name: UITextField.textDidEndEditingNotification, object: self)
         
         self.didSetup = true
     }
@@ -72,11 +72,11 @@ open class VLTextField: UITextField, ValidatableInputText {
     @objc private func notificationReceived(notification: Notification) {
         let status: TextInputStatus
         switch notification.name {
-        case Notification.Name.UITextFieldTextDidBeginEditing:
+        case UITextField.textDidBeginEditingNotification:
             status = .begin
-        case Notification.Name.UITextFieldTextDidChange:
+        case UITextField.textDidChangeNotification:
             status = .change
-        case Notification.Name.UITextFieldTextDidEndEditing:
+        case UITextField.textDidEndEditingNotification:
             status = .end
         default:
             return
@@ -140,9 +140,9 @@ open class VLTextView: UITextView, ValidatableInputText {
             return
         }
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)), name: Notification.Name.UITextViewTextDidBeginEditing, object: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)), name: Notification.Name.UITextViewTextDidChange, object: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)), name: Notification.Name.UITextViewTextDidEndEditing, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)), name: UITextView.textDidBeginEditingNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)), name: UITextView.textDidChangeNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)), name: UITextView.textDidEndEditingNotification, object: self)
 
         self.didSetup = true
     }
@@ -150,11 +150,11 @@ open class VLTextView: UITextView, ValidatableInputText {
     @objc private func notificationReceived(notification: Notification) {
         let status: TextInputStatus
         switch notification.name {
-        case Notification.Name.UITextViewTextDidBeginEditing:
+        case UITextView.textDidBeginEditingNotification:
             status = .begin
-        case Notification.Name.UITextViewTextDidChange:
+        case UITextView.textDidChangeNotification:
             status = .change
-        case Notification.Name.UITextViewTextDidEndEditing:
+        case UITextView.textDidEndEditingNotification:
             status = .end
         default:
             return
