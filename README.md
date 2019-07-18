@@ -1,6 +1,6 @@
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Build Status](https://travis-ci.org/fromkk/Valy.svg?branch=master)](https://travis-ci.org/fromkk/Valy)
+[![Build Status](https://app.bitrise.io/app/dfcd9f87866e7757/status.svg?token=mN4n-Xqm61DJM76VTk3nlQ)](https://app.bitrise.io/app/dfcd9f87866e7757)
 
 <img src="valy.png" width="320" height="auto" />
 
