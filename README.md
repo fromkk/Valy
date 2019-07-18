@@ -6,14 +6,16 @@
 
 # Valy
 
-Valy is string validation library with Swift 4.
+Valy is string validation library with Swift 5.
 
 # Required
 
-- Swift 4.1
-- Xcode 8
+- Swift 5
+- Xcode 10
 - iOS 8~ / watchOS 2~ / tvOS 8~ / macOS 10.16~
 - Carthage or Cocoapods
+
+If you use Swift 4.2 or before, try [Valy 0.0.6](https://github.com/fromkk/Valy/releases/tag/0.0.6).
 
 # Install
 
